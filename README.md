@@ -41,6 +41,7 @@ You should see a blank screen with a welcome message.
 ## Packages
 
 - no unused styles eslint plugin
+- @expo/vector-icons
 
 ### if using yarn
 
