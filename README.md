@@ -42,6 +42,7 @@ You should see a blank screen with a welcome message.
 
 - no unused styles eslint plugin
 - @expo/vector-icons
+- expo-router/entry
 
 ### if using yarn
 
