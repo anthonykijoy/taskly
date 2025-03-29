@@ -1,4 +1,4 @@
-import { StyleSheet, TextInput, ScrollView } from "react-native";
+import { StyleSheet, TextInput, View, FlatList, Text } from "react-native";
 import { theme } from "../theme";
 import { ShoppingListItem } from "../components/ShoppingListItem";
 import { useState } from "react";
@@ -8,25 +8,10 @@ type ShoppingListItemType = {
   name: string;
 };
 
-const initialList: ShoppingListItemType[] = [
-  {
-    id: "1",
-    name: "Coffee",
-  },
-  {
-    id: "2",
-    name: "Tea",
-  },
-  {
-    id: "3",
-    name: "Milk",
-  },
-];
-
 export default function App() {
-  const [shoppingList, setShoppingList] =
-    useState<ShoppingListItemType[]>(initialList);
+  const [shoppingList, setShoppingList] = useState<ShoppingListItemType[]>([]);
   const [value, setValue] = useState("");
+
   const handleSubmit = () => {
     if (value) {
       const newShoppingList = [
@@ -37,24 +22,31 @@ export default function App() {
       setValue("");
     }
   };
+
   return (
-    <ScrollView
+    <FlatList
+      data={shoppingList}
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
       stickyHeaderIndices={[0]}
-    >
-      <TextInput
-        placeholder="E.g Coffee"
-        style={styles.textInput}
-        value={value}
-        onChangeText={setValue}
-        returnKeyType="done"
-        onSubmitEditing={handleSubmit}
-      />
-      {shoppingList.map((item) => (
-        <ShoppingListItem name={item.name} key={item.id} />
-      ))}
-    </ScrollView>
+      ListEmptyComponent={
+        <View style={styles.listEmptyContainer}>
+          <Text>Your shopping list is empty</Text>
+        </View>
+      }
+      ListHeaderComponent={
+        <TextInput
+          placeholder="E.g Coffee"
+          style={styles.textInput}
+          value={value}
+          onChangeText={setValue}
+          returnKeyType="done"
+          onSubmitEditing={handleSubmit}
+        />
+      }
+      // we dont need to use keyExtractor because we are using id as key
+      renderItem={({ item }) => <ShoppingListItem name={item.name} />}
+    />
   );
 }
 
@@ -66,6 +58,11 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingBottom: 24,
+  },
+  listEmptyContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 18,
   },
   textInput: {
     borderColor: theme.colorLightGrey,
