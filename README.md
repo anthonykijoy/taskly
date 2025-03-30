@@ -40,9 +40,10 @@ You should see a blank screen with a welcome message.
 
 ## Packages
 
-- no unused styles eslint plugin
+- eslint-plugin-react-native
 - @expo/vector-icons
 - expo-router/entry
+- @react-native-async-storage/async-storage
 
 ### if using yarn
 
