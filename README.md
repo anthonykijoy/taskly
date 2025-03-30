@@ -47,6 +47,7 @@ You should see a blank screen with a welcome message.
 - expo-haptics
 - expo notifications
 - expo device
+- date-fns
 
 ### if using yarn
 
