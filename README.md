@@ -44,6 +44,7 @@ You should see a blank screen with a welcome message.
 - @expo/vector-icons
 - expo-router/entry
 - @react-native-async-storage/async-storage
+- expo-haptics
 
 ### if using yarn
 
