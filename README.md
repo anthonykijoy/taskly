@@ -45,6 +45,8 @@ You should see a blank screen with a welcome message.
 - expo-router/entry
 - @react-native-async-storage/async-storage
 - expo-haptics
+- expo notifications
+- expo device
 
 ### if using yarn
 
